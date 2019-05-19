@@ -10,7 +10,7 @@ public class Schedule {
 	public double[] timeToIndex(Ctime t) {
 		double[] index = new double[2];
 		index[1] = t.getDay();	// j = day
-		index[0] = t.getStart() - 9 * 2; //start = hour, 
+		index[0] = (t.getStart() - 9) * 2; //start = hour, 
 		return index;
 	}
 
