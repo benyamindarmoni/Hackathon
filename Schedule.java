@@ -7,7 +7,7 @@ public class Schedule {
 		mat = new Course[28][6];
 		grade = 0;
 	}
-public 
+
 	public boolean insert(Course cor) {
 	int[] index = timeToIndex(cor.getCtime());	//index = [i,j] for cor start time.
 		if (mat[index[0]][index[1]] == null)//the 
