@@ -21,8 +21,6 @@ public class Course {
 		this.Course_Name=Course_Name;
 		this.Lecture_Name=Lecture_Name;
 		this.points=points;
-		
-		this.usual=usual;
 		this.time=new Ctime(c);
 	}
 	public Course(Course a) {
