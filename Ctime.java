@@ -3,13 +3,13 @@ package hack;
 public class Ctime {
 	
 	int day;
-	int start;
-	int duration;
+	double start;
+	double duration;
 	
 	public Ctime(String t) {
 		
 	}
-	public Ctime(int _day, int _start, int _duration) {
+	public Ctime(int _day, double _start, double _duration) {
 		day = _day;
 		start = _start;
 		duration = _duration;
@@ -18,10 +18,10 @@ public class Ctime {
 	public int getDay() {
 		return day;
 	}
-	public int getStart() {
+	public double getStart() {
 		return start;
 	}
-	public int getDuration() {
+	public double getDuration() {
 		return duration;
 	}
 }
