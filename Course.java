@@ -5,8 +5,7 @@ public class Course {
 	private String Course_Name;
 	private String Lecture_Name;
 	private int points;
-	private double[] hours=new double[2];
-	private char day;
+	private Ctime time;
 	private boolean usual;
 
 	public Course() {
@@ -14,10 +13,10 @@ public class Course {
 		Course_Name=null;
 		Lecture_Name=null;
 		points=0;
-		day='A';
 		usual=false;
+		time=null;
 	}
-	public Course( long id,String Course_Name,String Lecture_Name, int points, double[] hours,char day,boolean usual) {
+	public Course( Ctime c,long id,String Course_Name,String Lecture_Name, int points, double[] hours,char day,boolean usual) {
 		this.id=id;
 		this.Course_Name=Course_Name;
 		this.Lecture_Name=Lecture_Name;
@@ -25,15 +24,23 @@ public class Course {
 		this.day=day;
 		this.usual=usual;
 		this.hours=hours;
+		this.time=new Ctime(c);
 	}
 	public Course(Course a) {
 		id=a.id;
 		this.Course_Name=a.Course_Name;
 		this.Lecture_Name=a.Lecture_Name;
 		this.points=a.points;
-		this.day=a.day;
+		
 		this.usual=a.usual;
 		this.hours=a.hours;
+		this.time=new Ctime(a.time);
+	}
+	public Ctime getTime() {
+		return time;
+	}
+	public void setTime(Ctime c) {
+		this.time = new Ctime(c);
 	}
 	public long getId() {
 		return id;
