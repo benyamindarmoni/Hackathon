@@ -35,10 +35,8 @@ public class Schedule {
 				counter++;}
 		}
 		return true;
-		
-		
-
 	}
+
 
 
 }
