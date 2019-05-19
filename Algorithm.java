@@ -4,33 +4,35 @@ import java.util.ArrayList;
 
 
 public class Algorithm {
-	ArrayList<ArrayList<Course>>available;
-	
-	
-	public void sinun(Course a[],Constraints c ) {
+Course availble[][];
+
+
+	public void sinun(Course before[],Constraints c ) {
+		availble =new Course [before.length][before.length];
 		boolean good=true;
-		for(int i=0;i<a.length;i++) {
+		for(int i=0;i<before.length;i++) {
 			for(int j=0;j<c.Constraint.size();j++) {
-				if(a[i].getTime().equals(c.Constraint.get(j))) {
+				if(availble[0][i].getTime().doesCollide(c.Constraint.get(j))) {
 					good=false;
 					break;
 				}
-				if(good) {
-					int x=0;
-				for(;x<available.size();x++) {
-					if(available.get(x).get(0).getTime().equals(a[i].getTime()))break;
+				if(j+1==c.Constraint.size()&&good) {
+					//need to add a[i] 2 case: name of course a[i] is inside or not.
+
+					available.get(index)
 				}
-				available.
-					this.available[i].add(a[i]);
-				}
-				good=true;
-					
-				}
+
+
 			}
+			good=true;
 		}
-
-
-
-
-
 	}
+	public void build_scheduls() {
+		
+	}
+
+
+
+
+
+}
