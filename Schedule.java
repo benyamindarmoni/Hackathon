@@ -7,6 +7,13 @@ public class Schedule {
 		mat = new Course[28][6];
 		grade = 0;
 	}
+	
+	public int[] timeToIndex(Ctime t) {
+		int[] index = new int[2];
+		index[1] = t.getDay();	// j = day
+		index[0] = t.getStart() - 9 * 2; //start = hour, 
+		
+	}
 
 	public boolean insert(Course cor) {
 	int[] index = timeToIndex(cor.getCtime());	//index = [i,j] for cor start time.
