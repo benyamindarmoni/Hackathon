@@ -1,34 +1,40 @@
 package hack;
 
-public class Course {
+public class Course 
+{
 	private long id;
 	private String Course_Name;
 	private String Lecture_Name;
-	private int points;
+	private int points;//Number of points to the course.
+	private int capcity;
+	private int registered;
 	private Ctime time;
-	private boolean usual;
 
 	public Course() {
 		id=0;
 		Course_Name=null;
 		Lecture_Name=null;
 		points=0;
-		usual=false;
+		capcity = 0;
+		registered = 0;
 		time=null;
 	}
-	public Course( Ctime c,long id,String Course_Name,String Lecture_Name, int points, double[] hours,char day,boolean usual) {
+	
+	public Course(long id,String Course_Name,String Lecture_Name, int points, int capacity, int registered, Ctime time)
+	{
 		this.id=id;
 		this.Course_Name=Course_Name;
 		this.Lecture_Name=Lecture_Name;
 		this.points=points;
-		this.time=new Ctime(c);
+
+		this.time=new Ctime(time);
 	}
+	
 	public Course(Course a) {
 		id=a.id;
 		this.Course_Name=a.Course_Name;
 		this.Lecture_Name=a.Lecture_Name;
 		this.points=a.points;
-		this.usual=a.usual;
 		this.time=new Ctime(a.time);
 	}
 	public Ctime getTime() {
@@ -62,17 +68,10 @@ public class Course {
 		this.points = points;
 	}
 	
-	
-	
-	
-	public boolean isUsual() {
-		return usual;
+	public double getLoad()
+	{
+		return registered/capcity;
 	}
-	public void setUsual(boolean usual) {
-		this.usual = usual;
-	}
-
-
-
-
 }
+
+
