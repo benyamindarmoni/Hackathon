@@ -9,6 +9,11 @@ public class Ctime {
 	public Ctime(String t) {
 		
 	}
+public Ctime(Ctime t) {
+		day=t.day;
+		start=t.start;
+		duration=t.duration;
+	}
 	public Ctime(int _day, int _start, int _duration) {
 		day = _day;
 		start = _start;
@@ -17,6 +22,10 @@ public class Ctime {
 }
 	public int getDay() {
 		return day;
+	}
+	public boolean equals(Ctime a) {
+		if(day==a.day&&start==a.start&&duration==a.duration)return true;
+		return false;
 	}
 	public int getStart() {
 		return start;

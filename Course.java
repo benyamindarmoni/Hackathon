@@ -21,9 +21,8 @@ public class Course {
 		this.Course_Name=Course_Name;
 		this.Lecture_Name=Lecture_Name;
 		this.points=points;
-		this.day=day;
+		
 		this.usual=usual;
-		this.hours=hours;
 		this.time=new Ctime(c);
 	}
 	public Course(Course a) {
@@ -31,9 +30,7 @@ public class Course {
 		this.Course_Name=a.Course_Name;
 		this.Lecture_Name=a.Lecture_Name;
 		this.points=a.points;
-		
 		this.usual=a.usual;
-		this.hours=a.hours;
 		this.time=new Ctime(a.time);
 	}
 	public Ctime getTime() {
@@ -66,18 +63,10 @@ public class Course {
 	public void setPoints(int points) {
 		this.points = points;
 	}
-	public double[] getHours() {
-		return hours;
-	}
-	public void setHours(double[] hours) {
-		this.hours = hours;
-	}
-	public char getDay() {
-		return day;
-	}
-	public void setDay(char day) {
-		this.day = day;
-	}
+	
+	
+	
+	
 	public boolean isUsual() {
 		return usual;
 	}
