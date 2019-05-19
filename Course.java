@@ -21,9 +21,7 @@ public class Course {
 		this.Course_Name=Course_Name;
 		this.Lecture_Name=Lecture_Name;
 		this.points=points;
-		this.day=day;
 		this.usual=usual;
-		this.hours=hours;
 		this.time=new Ctime(c);
 	}
 	public Course(Course a) {
@@ -33,7 +31,6 @@ public class Course {
 		this.points=a.points;
 		
 		this.usual=a.usual;
-		this.hours=a.hours;
 		this.time=new Ctime(a.time);
 	}
 	public Ctime getTime() {
