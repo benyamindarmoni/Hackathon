@@ -27,10 +27,25 @@ public Ctime(Ctime t) {
 	public int getDay() {
 		return day;
 	}
-
-	public boolean equals(Ctime a) {
-		if(day==a.day&&start==a.start&&duration==a.duration)return true;
-		return false;
+	/**
+	 * this function check if 2 time lines collide with each other
+	 * @param c - course timeLine
+	 * @return	true if not collide, false if collide
+	 */
+	public boolean doesCollide(Ctime c) {
+		if (this.day == c.day) {
+			double cStart = c.start;
+			double tStart = this.start;
+			double cEnd = cStart+c.duration;
+			double tEnd = tStart+this.duration;
+			if(tStart<cStart && tEnd>cStart) {
+				return false;
+			}
+			else if(cStart<tStart && cEnd > tStart) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public double getStart() {
