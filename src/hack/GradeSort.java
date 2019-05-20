@@ -19,4 +19,9 @@ public class GradeSort {
 		Collections.sort(sList);
 	}
 	
+	public static void sortByGradesstatic(ScheduleContainer sc) {
+		ArrayList<Schedule> sList = sc.getList();
+		Collections.sort(sList);
+	}
+	
 }

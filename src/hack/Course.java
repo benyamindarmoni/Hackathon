@@ -64,6 +64,12 @@ public class Course
 	{
 		return registered/capcity;
 	}
+	
+	@Override
+	public String toString() {
+		//return"ID:" + this.id + "Name:" + this.Course_Name + "\n";
+		return this.Course_Name;
+	}
 }
 
 

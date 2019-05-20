@@ -124,6 +124,7 @@ public class DataBase
 			
 			br.close();
 			
+			
 			 // write the new string with the replaced line OVER the same file
 	        FileOutputStream fileOut = new FileOutputStream(course_file);
 	        fileOut.write(inputBuffer.toString().getBytes());
@@ -138,6 +139,17 @@ public class DataBase
 	public static void main(String []args)
 	{
 		ArrayList<Course> al = readCourseFile(course_file);
-		updateNumOfStudents(4, 94);
+		Algorithm alg = new Algorithm();
+		Constraints co = new Constraints();
+		co.AddConstraint(new Ctime(1, 9, 5));
+		co.AddConstraint(new Ctime(3, 16, 5));
+		alg.sinun(alg.toArray(al), co);
+		alg.build_scheduls();
+		ScheduleContainer sc = new ScheduleContainer();
+		GradeSort.sortByGradesstatic(sc);
+		sc.getList().get(0).toString();
+		System.out.println("\n\n\n\n\n\n\n");
+
+		
 	}
 }

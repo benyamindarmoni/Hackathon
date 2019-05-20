@@ -1,5 +1,6 @@
 package hack;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class Schedule implements Comparable<Schedule>{
@@ -11,8 +12,9 @@ public class Schedule implements Comparable<Schedule>{
 	}
 	public int[] timeToIndex(Ctime t) {//gets a Ctime object and puts it into index
 		int[] index = new int[2];
-		index[1] = t.getDay();	// j = day
-		index[0] = (int)(t.getStart() - 8) * 2; //start = hour, 
+		index[1] = t.getDay() - 1;	// j = day
+		double tmp = ((t.getStart() - 8) * 2); //start = hour, 
+		index[0] = (tmp < 1) ? 1 : (int)tmp;
 		return index;
 	}
 	/**
@@ -23,17 +25,20 @@ public class Schedule implements Comparable<Schedule>{
 	public boolean insert(Course cor) {
 		int[] index = timeToIndex(cor.getTime());	//index = [i,j] for cor start time. 
 		int counter = 0; //to fill up the array by the duration 	
-		for (double i = cor.getTime().getDuration(); i>=0;i=i-0.5) {//go over each time 
+		for (double i = cor.getTime().getDuration(); i>0;i=i-0.5) {//go over each time 
 
-			if (mat[index[0]][index[1]+counter] == null) {//checks if the array is full
-				mat[index[0]][index[1]+counter] = cor;
-				counter++;}
-			else return false;
+			if (mat[index[0]+counter-1][index[1]] == null) {//checks if the array is full
+				if(index[0]+counter-1 == 27) break;
+				counter++;
+			}
+			else 
+				return false;
 		}
 		counter = 0;
-		for (double i = cor.getTime().getDuration(); i>=0;i=i-0.5) {//insert course to schdual array
-			if (mat[index[0]][index[1]+counter] == null) { 
-				mat[index[0]][index[1]+counter] = cor;
+		for (double i = cor.getTime().getDuration(); i>0;i=i-0.5) {//insert course to schdual array
+			if (mat[index[0]+counter-1][index[1]] == null) { 
+				mat[index[0]+counter-1][index[1]] = cor;
+				if(index[0]+counter-1 == 27) break;
 				counter++;}
 		}
 		return true;
@@ -57,6 +62,15 @@ public class Schedule implements Comparable<Schedule>{
 	@Override
 	public int compareTo(Schedule o) {
 		return this.grade-o.grade;
+	}
+	
+	@Override
+	public String toString() 
+	{
+		for (int i = 0; i < mat.length; i++) {
+			System.out.println(Arrays.toString(mat[i]));
+		}
+		return super.toString();
 	}
 }
 

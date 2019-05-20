@@ -30,7 +30,7 @@ public Ctime(Ctime t) {
 	/**
 	 * this function check if 2 time lines collide with each other
 	 * @param c - course timeLine
-	 * @return	true if not collide, false if collide
+	 * @return	true if collide, false if not collide
 	 */
 	public boolean doesCollide(Ctime c) {
 		if (this.day == c.day) {
@@ -39,13 +39,13 @@ public Ctime(Ctime t) {
 			double cEnd = cStart+c.duration;
 			double tEnd = tStart+this.duration;
 			if(tStart<cStart && tEnd>cStart) {
-				return false;
+				return true;
 			}
 			else if(cStart<tStart && cEnd > tStart) {
-				return false;
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 	
 	public double getStart() {

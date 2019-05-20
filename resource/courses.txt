@@ -56,16 +56,16 @@ ID:7
 name:Infitisemali
 lecturer:Ziv Shemi
 points:5
-day:1
-start:17
+day:4
+start:9
 duration:5
 capacity:100
-registered:94
+registered:21
 ID:8
 name:Number's Theorim
 lecturer:Elad Horev
 points:3.5
-day:3
+day:1
 start:9
 duration:4
 capacity:100
@@ -74,8 +74,8 @@ ID:9
 name:Maarhot Sifratiot
 lecturer:Eyal Magori
 points:2.5
-day:5
-start:17
+day:4
+start:14
 duration:2.5
 capacity:100
 registered:94
@@ -83,8 +83,8 @@ ID:10
 name:Mavo Lehishuv
 lecturer:Elizabeth
 points:5
-day:6
-start:8
+day:2
+start:17
 duration:6
 capacity:100
 registered:20
