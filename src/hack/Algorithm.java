@@ -1,14 +1,9 @@
 package hack;
-
 import java.util.ArrayList;
-
-
 public class Algorithm {
 	ArrayList<ArrayList<Course>> availble;//availble.get(i) = main courses, 
 	//availble.get(i).get(j) = sub times.
 	int []counter;
-
-
 	public Algorithm() {
 		availble = new ArrayList<ArrayList<Course>>();
 		counter=null;
