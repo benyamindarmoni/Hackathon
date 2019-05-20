@@ -2,7 +2,7 @@ package hack;
 
 import java.util.Comparator;
 
-public class Schedule {
+public class Schedule implements Comparable<Schedule>{
 	int grade;
 	Course mat[][];
 	public Schedule() {
@@ -49,11 +49,15 @@ public class Schedule {
 	Comparator<Schedule> compareBygrade = new Comparator<Schedule>() {
 	    @Override
 	    public int compare(Schedule o1, Schedule o2) {
-	        return Integer.valueOf(o1.getGrade()).compareTo(Integer.valueOf(o2.getGrade()));
+	        return o1.compareTo(o2);
 	    }
 	
 
 	};
+	@Override
+	public int compareTo(Schedule o) {
+		return this.grade-o.grade;
+	}
 }
 
 
