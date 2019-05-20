@@ -3,11 +3,8 @@ package hack;
 import java.util.ArrayList;
 
 public class ScheduleContainer {
-	ArrayList<Schedule> scheduleList;
+	public static ArrayList<Schedule> scheduleList=new ArrayList<Schedule>();
 	
-	public ScheduleContainer() {
-		scheduleList =new ArrayList<Schedule>();
-	}
 	
 	public void AddSchedule(Schedule s) {
 		scheduleList.add(s);
