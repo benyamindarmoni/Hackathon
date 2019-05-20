@@ -7,7 +7,7 @@ public class Algorithm {
 Course availble[][];
 
 
-	public void sinun(Course before[],Constraints c ) {
+	public void sinun(Course before[],Constraints c) {
 		availble =new Course [before.length][before.length];
 		boolean good=true;
 		for(int i=0;i<before.length;i++) {
