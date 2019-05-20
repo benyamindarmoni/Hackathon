@@ -5,27 +5,19 @@ public class Course
 	private long id;
 	private String Course_Name;
 	private String Lecture_Name;
-	private int points;//Number of points to the course.
+	private double points;//Number of points to the course.
 	private int capcity;
 	private int registered;
 	private Ctime time;
-
-	public Course() {
-		id=0;
-		Course_Name=null;
-		Lecture_Name=null;
-		points=0;
-		capcity = 0;
-		registered = 0;
-		time=null;
-	}
 	
-	public Course(long id,String Course_Name,String Lecture_Name, int points, int capacity, int registered, Ctime time)
+	public Course(long id,String Course_Name,String Lecture_Name, double points, int capacity, int registered, Ctime time)
 	{
 		this.id=id;
 		this.Course_Name=Course_Name;
 		this.Lecture_Name=Lecture_Name;
 		this.points=points;
+		this.capcity = capacity;
+		this.registered = registered;
 
 		this.time=new Ctime(time);
 	}
@@ -61,7 +53,7 @@ public class Course
 	public void setLecture_Name(String lecture_Name) {
 		Lecture_Name = lecture_Name;
 	}
-	public int getPoints() {
+	public double getPoints() {
 		return points;
 	}
 	public void setPoints(int points) {
