@@ -12,5 +12,9 @@ public class Constraints {
 	public void AddConstraint(Ctime c) {
 		constraint.add(c);
 	}
+	
+	public ArrayList<Ctime> getConstraintsList(){
+		return constraint;
+	}
 
 }
