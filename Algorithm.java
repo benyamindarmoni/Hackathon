@@ -45,24 +45,22 @@ public class Algorithm {
 
 	}
 	public void build_scheduls() {
-		
+
 		counter=new int[availble.size()];
 
 		while(counter[0]<availble.get(0).size()) {
 			Schedule a=new Schedule ();
 			for(int i=0;i<availble.size();i++) {
-				//for(int j=0;j<availble.get(i).size();j++) {}
-				a.insert(availble.get(i).get(counter[i]));
+				boolean ans=a.insert(availble.get(i).get(counter[i]));
+				if(!ans)a.grade++;
 			}
 
 			int help=1;
 			counter[counter.length-help]++;
-			while(counter[counter.length-help]+1>=availble.get(availble.size()).size()) {
+			while(counter[counter.length-help]-1>=availble.get(availble.size()-help).size()) {
 				counter[counter.length-help]=0;
 				help++;
 				counter[counter.length-help]++;
-
-
 			}
 			ScheduleContainer.scheduleList.add(a);
 		}

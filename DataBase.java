@@ -2,13 +2,59 @@ package hack;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class DataBase
 {
-	static Course [] readCourseFile(String path)
+	private static String course_file = "resource\\courses.txt";
+	
+	private static Course readSingleCourse(BufferedReader br, String first_line) throws IOException
+	{
+		String line = first_line;
+		//ID
+		int data_field_ind = line.indexOf(":");
+		long c_id = Integer.parseInt(line.substring(data_field_ind + 1));
+		line = br.readLine();
+		
+		data_field_ind = line.indexOf(":");
+		String c_name = line.substring(data_field_ind + 1);
+		line = br.readLine();
+		
+		data_field_ind = line.indexOf(":");
+		String c_lecturer = line.substring(data_field_ind + 1);
+		line = br.readLine();
+		
+		data_field_ind = line.indexOf(":");
+		double c_points = Double.parseDouble(line.substring(data_field_ind + 1));
+		line = br.readLine();
+		
+		data_field_ind = line.indexOf(":");
+		int c_day = Integer.parseInt(line.substring(data_field_ind + 1));
+		line = br.readLine();
+		
+		data_field_ind = line.indexOf(":");
+		double c_start_time = Double.parseDouble(line.substring(data_field_ind + 1));
+		line = br.readLine();
+		
+		data_field_ind = line.indexOf(":");
+		double c_duration = Double.parseDouble(line.substring(data_field_ind + 1));
+		line = br.readLine();
+		
+		data_field_ind = line.indexOf(":");
+		int c_capacity = Integer.parseInt(line.substring(data_field_ind + 1));
+		line = br.readLine();
+		
+		data_field_ind = line.indexOf(":");
+		int c_registered = Integer.parseInt(line.substring(data_field_ind + 1));
+		
+		return (new Course(c_id, c_name, c_lecturer, c_points, 
+				c_capacity, c_registered, new Ctime(c_day,c_start_time,c_duration)));
+	}
+	
+	static ArrayList<Course> readCourseFile(String path)
 	{
 		ArrayList<Course>courses = new ArrayList<Course>();
 		
@@ -18,26 +64,71 @@ public class DataBase
 			String line;
 			while((line = br.readLine()) != null)
 			{
-				//ID
-				int data_field_ind = line.indexOf(":");
-				int c_id = Integer.parseInt(line.substring(data_field_ind + 1));
-				
-				data_field_ind = line.indexOf(":");
-				String c_name = line.substring(data_field_ind + 1);
-				
-				data_field_ind = line.indexOf(":");
-				String c_lecturer = line.substring(data_field_ind + 1);
-				
-				data_field_ind = line.indexOf(":");
-				int c_points = Integer.parseInt(line.substring(data_field_ind + 1));
-				
+				courses.add(readSingleCourse(br, line));
 			}
+			
+			br.close();
+			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return courses;
+	}
+	
+	static void updateNumOfStudents(long c_id, int new_val)
+	{
+		try {
+			FileReader fr = new FileReader(course_file);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			StringBuffer inputBuffer = new StringBuffer();
+			boolean found = false;
+			while((line = br.readLine()) != null && !found)
+			{
+				inputBuffer.append(line);
+				inputBuffer.append('\n');
+				//Course corse = readSingleCourse(br, line);
+				int data_field_ind = line.indexOf(":");
+				long temp_id = Integer.parseInt(line.substring(data_field_ind + 1));
+
+				if(temp_id == c_id)//This is the course to update.
+				{
+					found = true;
+					for (int i = 0; i < 7; i++)
+					{
+						inputBuffer.append(br.readLine());
+						inputBuffer.append('\n');
+					}
+					inputBuffer.append("registered: " + new_val);
+					inputBuffer.append('\n');
+				}
+			}
+			
+			while((line = br.readLine()) != null)
+			{
+				inputBuffer.append(line);
+				inputBuffer.append('\n');
+			}
+			
+			br.close();
+			
+			 // write the new string with the replaced line OVER the same file
+	        FileOutputStream fileOut = new FileOutputStream(course_file);
+	        fileOut.write(inputBuffer.toString().getBytes());
+	        fileOut.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String []args)
+	{
+		ArrayList<Course> al = readCourseFile(course_file);
+		updateNumOfStudents(1, 4);
 	}
 }
