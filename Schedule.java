@@ -1,5 +1,7 @@
 package hack;
 
+import java.util.Comparator;
+
 public class Schedule {
 	int grade;
 	Course mat[][];
@@ -36,9 +38,22 @@ public class Schedule {
 		}
 		return true;
 	}
+	public void addGrade (int num) {
+		this.grade += num; 	
+	}
 
 
+	public int getGrade() {
+		return this.grade;
+	}
+	Comparator<Schedule> compareBygrade = new Comparator<Schedule>() {
+	    @Override
+	    public int compare(Schedule o1, Schedule o2) {
+	        return Integer.valueOf(o1.getGrade()).compareTo(Integer.valueOf(o2.getGrade()));
+	    }
+	
 
+	};
 }
 
 
