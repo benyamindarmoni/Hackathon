@@ -89,8 +89,8 @@ public class DataBase
 			while((line = br.readLine()) != null && !found)
 			{
 				inputBuffer.append(line);
-				inputBuffer.append('\n');
-				//Course corse = readSingleCourse(br, line);
+				inputBuffer.append("\r\n");
+
 				int data_field_ind = line.indexOf(":");
 				long temp_id = Integer.parseInt(line.substring(data_field_ind + 1));
 
@@ -100,17 +100,26 @@ public class DataBase
 					for (int i = 0; i < 7; i++)
 					{
 						inputBuffer.append(br.readLine());
-						inputBuffer.append('\n');
+						inputBuffer.append("\r\n");
 					}
-					inputBuffer.append("registered: " + new_val);
-					inputBuffer.append('\n');
+					inputBuffer.append("registered:" + new_val);
+					inputBuffer.append("\r\n");
+				}
+				else
+				{
+					//Read all object
+					for (int i = 0; i < 8; i++)
+					{
+						inputBuffer.append(br.readLine());
+						inputBuffer.append("\r\n");
+					}
 				}
 			}
 			
 			while((line = br.readLine()) != null)
 			{
 				inputBuffer.append(line);
-				inputBuffer.append('\n');
+				inputBuffer.append("\r\n");
 			}
 			
 			br.close();
@@ -129,6 +138,6 @@ public class DataBase
 	public static void main(String []args)
 	{
 		ArrayList<Course> al = readCourseFile(course_file);
-		updateNumOfStudents(1, 4);
+		updateNumOfStudents(4, 94);
 	}
 }
